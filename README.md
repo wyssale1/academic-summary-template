@@ -4,18 +4,35 @@ A Typst template package for academic summaries with styled components, tables, 
 
 ## Installation
 
-Import directly from GitHub:
+### Option 1: Local Package (Recommended)
 
-```typst
-#import "@git/github.com/wyssale1/academic-summary-template:main": *
+1. Clone the repository to your local packages directory:
+```bash
+# macOS
+mkdir -p ~/Library/Application\ Support/typst/packages/local/academic-summary-template/0.1.0
+git clone https://github.com/wyssale1/academic-summary-template.git ~/Library/Application\ Support/typst/packages/local/academic-summary-template/0.1.0
+
+# Linux
+mkdir -p ~/.local/share/typst/packages/local/academic-summary-template/0.1.0
+git clone https://github.com/wyssale1/academic-summary-template.git ~/.local/share/typst/packages/local/academic-summary-template/0.1.0
 ```
 
-Or clone the repository and import locally.
+2. Import in your document:
+```typst
+#import "@local/academic-summary-template:0.1.0": *
+```
+
+### Option 2: Relative Import
+
+Clone the repository next to your project and import relatively:
+```typst
+#import "../academic-summary-template/lib.typ": *
+```
 
 ## Quick Start
 
 ```typst
-#import "@git/github.com/wyssale1/academic-summary-template:main": *
+#import "@local/academic-summary-template:0.1.0": *
 
 #show: summary-template.with(
   course: "Research Design (RDE)",
