@@ -271,11 +271,13 @@
 // ============================================
 // Exam Header Component (Optional)
 // ============================================
+// max-points: Set to total points, or leave as none to auto-calculate
 #let exam-header(
   module: "Modulname",
   semester: "HS24",
   date: none,
   duration: "90 Minuten",
+  max-points: none,
 ) = {
   let date-line = if date != none { [*Datum:* #date] } else { [] }
 
@@ -285,6 +287,24 @@
       stroke: 0.5pt + gray-400,
       inset: 12pt,
     )[
+      // Points box in top right corner
+      #place(top + right, dx: 6pt, dy: -6pt)[
+        #box(
+          fill: gray-200,
+          stroke: 0.5pt + gray-400,
+          radius: 3pt,
+          inset: (x: 8pt, y: 5pt),
+        )[
+          #text(size: 9pt, fill: gray-600)[
+            #if max-points != none [
+              Max. #max-points Punkte
+            ] else [
+              #context [Max. #exam-points.final() Punkte]
+            ]
+          ]
+        ]
+      ]
+
       #table(
         columns: (1fr, 1fr),
         stroke: none,
