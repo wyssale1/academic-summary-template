@@ -173,22 +173,31 @@
 // Open Question Component
 // ============================================
 // Text field for written answers
+// - If points is none, no "(X Punkte)" is shown (useful for intro text)
+// - If answer-lines is 0, no answer box is shown
 
 #let open-question(
   title: "Aufgabe",
-  points: 3,
+  points: none,
   context-text: none,
   question: none,
   answer-lines: 8,
   solution: none,
   show-solutions: false,
 ) = {
-  add-points(points)
+  // Only add points if specified
+  if points != none {
+    add-points(points)
+  }
 
   block(spacing: 1.5em, breakable: false)[
-    // Title with points
+    // Title with optional points
     #text(weight: "bold", size: 11pt)[
-      #underline[#title (#points Punkte):]
+      #if points != none [
+        #underline[#title (#points Punkte):]
+      ] else [
+        #underline[#title:]
+      ]
     ]
 
     // Optional context
@@ -203,29 +212,31 @@
       #text(size: 10pt, weight: "medium")[#question]
     ]
 
-    #v(0.5em)
+    // Answer area (only if answer-lines > 0)
+    #if answer-lines > 0 [
+      #v(0.5em)
 
-    // Answer area
-    #block(breakable: false)[
-      #box(
-        width: 100%,
-        stroke: 0.5pt + gray-400,
-        radius: 2pt,
-        inset: 10pt,
-        fill: if show-solutions { green-50 } else { white },
-      )[
-        #if show-solutions and solution != none [
-          // Show solution
-          #text(size: 10pt, fill: green-800)[
-            *Musterlösung:*
-            #v(0.3em)
-            #solution
-          ]
-        ] else [
-          // Empty lined area
-          #for i in range(answer-lines) [
-            #v(1.2em)
-            #line(length: 100%, stroke: 0.3pt + gray-300)
+      #block(breakable: false)[
+        #box(
+          width: 100%,
+          stroke: 0.5pt + gray-400,
+          radius: 2pt,
+          inset: 10pt,
+          fill: if show-solutions { green-50 } else { white },
+        )[
+          #if show-solutions and solution != none [
+            // Show solution
+            #text(size: 10pt, fill: green-800)[
+              *Musterlösung:*
+              #v(0.3em)
+              #solution
+            ]
+          ] else [
+            // Empty lined area
+            #for i in range(answer-lines) [
+              #v(1.2em)
+              #line(length: 100%, stroke: 0.3pt + gray-300)
+            ]
           ]
         ]
       ]
