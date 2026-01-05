@@ -54,11 +54,18 @@ Repository neben dein Projekt klonen:
 #import "@local/academic-summary-template:0.1.0": *
 
 #show: summary-template.with(
+  // Required
   course: "Research Design (RDE)",
   author: "Alexander Wyss",
+  // Optional
   title: "Zusammenfassung",
+  subtitle: "Erstellt für Unternehmensentwicklung (MSc)",
+  title-image: image("assets/title-image.jpg", width: 100%),
+  show-toc: true,                    // Inhaltsverzeichnis (default: true)
+  toc-title: "Inhaltsverzeichnis",   // TOC Titel
 )
 
+// Jetzt direkt mit den Kapiteln beginnen - Title Page + TOC werden automatisch generiert
 = Kapitel 1
 #pro-tipp[Ein hilfreicher Tipp!]
 ```
