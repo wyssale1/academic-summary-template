@@ -4,9 +4,31 @@ A Typst template package for academic summaries with styled components, tables, 
 
 ## Installation
 
-### Option 1: Local Package (Recommended)
+> **Hinweis**: Typst unterstützt derzeit **keinen direkten Import von GitHub URLs**. Das Package muss lokal installiert werden, aber mit dem Symlink-Ansatz werden Änderungen automatisch übernommen.
 
-1. Clone the repository to your local packages directory:
+### Option 1: Symlink (Empfohlen - Auto-Update)
+
+Mit dieser Methode werden Änderungen am Repository automatisch übernommen:
+
+```bash
+# 1. Repository an beliebigen Ort klonen
+git clone https://github.com/wyssale1/academic-summary-template.git ~/projects/academic-summary-template
+
+# 2. Symlink erstellen (macOS)
+mkdir -p ~/Library/Application\ Support/typst/packages/local/academic-summary-template
+ln -sf ~/projects/academic-summary-template ~/Library/Application\ Support/typst/packages/local/academic-summary-template/0.1.0
+
+# Linux: ~/.local/share/typst/packages/local/ statt ~/Library/Application Support/typst/packages/local/
+```
+
+**Updates ziehen:**
+```bash
+cd ~/projects/academic-summary-template
+git pull
+```
+
+### Option 2: Direkte Installation
+
 ```bash
 # macOS
 mkdir -p ~/Library/Application\ Support/typst/packages/local/academic-summary-template/0.1.0
@@ -17,19 +39,16 @@ mkdir -p ~/.local/share/typst/packages/local/academic-summary-template/0.1.0
 git clone https://github.com/wyssale1/academic-summary-template.git ~/.local/share/typst/packages/local/academic-summary-template/0.1.0
 ```
 
-2. Import in your document:
-```typst
-#import "@local/academic-summary-template:0.1.0": *
-```
+### Option 3: Relativer Import
 
-### Option 2: Relative Import
-
-Clone the repository next to your project and import relatively:
+Repository neben dein Projekt klonen:
 ```typst
 #import "../academic-summary-template/lib.typ": *
 ```
 
-## Quick Start
+---
+
+## Import in deinem Dokument
 
 ```typst
 #import "@local/academic-summary-template:0.1.0": *
@@ -40,43 +59,71 @@ Clone the repository next to your project and import relatively:
   title: "Zusammenfassung",
 )
 
-= Introduction
-
-#pro-tipp[This is a pro tip!]
-
-#warning[This is a warning!]
-
-#chapter-summary[
-  - Key point 1
-  - Key point 2
-]
-
-#fancy-table(
-  columns: (1fr, 1fr),
-  [*Header 1*], [*Header 2*],
-  [Content 1], [Content 2],
-)
+= Kapitel 1
+#pro-tipp[Ein hilfreicher Tipp!]
 ```
 
-## Components
+---
 
-| Component           | Description                           |
-| ------------------- | ------------------------------------- |
-| `pro-tipp()`        | Blue tip box with lightbulb icon      |
-| `warning()`         | Yellow warning box                    |
-| `chapter-summary()` | Gray summary box                      |
-| `fancy-table()`     | Styled table with header highlighting |
-| `plot()`            | Figure wrapper with scaling           |
+## Komponenten
+
+| Komponente          | Beschreibung                         |
+| ------------------- | ------------------------------------ |
+| `pro-tipp()`        | Blauer Tipp-Kasten mit Glühbirne     |
+| `warning()`         | Gelber Warnungs-Kasten               |
+| `chapter-summary()` | Grauer Zusammenfassungs-Kasten       |
+| `fancy-table()`     | Styled Table mit Header-Highlighting |
+| `plot()`            | Figure-Wrapper mit Skalierung        |
 
 ## Styles
 
-| Export                     | Description                           |
+| Export                     | Beschreibung                          |
 | -------------------------- | ------------------------------------- |
-| `summary-template()`       | Main template with page/heading setup |
-| `blue-50`, `gray-100`, ... | Tailwind color palette                |
-| `styled-box()`             | Styled box for plots                  |
-| `main-font`                | Default font (Roboto)                 |
+| `summary-template()`       | Haupt-Template mit Page/Heading Setup |
+| `blue-50`, `gray-100`, ... | Tailwind-Farbpalette                  |
+| `styled-box()`             | Styled Box für Plots                  |
+| `main-font`                | Standard-Schriftart (Roboto)          |
 
-## License
+---
+
+## Versionierung & Updates
+
+### Neue Version erstellen (für Package-Maintainer)
+
+1. **Version in `typst.toml` anpassen:**
+```toml
+[package]
+version = "0.2.0"  # <- erhöhen
+```
+
+2. **Änderungen committen und pushen:**
+```bash
+git add -A
+git commit -m "Release v0.2.0: Beschreibung der Änderungen"
+git push origin main
+```
+
+3. **Optional: Git Tag erstellen** (empfohlen für stabile Releases):
+```bash
+git tag v0.2.0
+git push origin v0.2.0
+```
+
+### Als Nutzer: Auf neue Version updaten
+
+```bash
+# Bei Symlink-Installation:
+cd ~/projects/academic-summary-template
+git pull
+
+# Falls du einen bestimmten Tag willst:
+git checkout v0.2.0
+```
+
+**Wichtig**: Bei Symlink-Installation musst du ggf. den Symlink-Pfad anpassen wenn sich die Major-Version ändert (z.B. `0.1.0` → `1.0.0`).
+
+---
+
+## Lizenz
 
 MIT
