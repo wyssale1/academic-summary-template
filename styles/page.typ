@@ -10,9 +10,15 @@
 
 // Main template function
 #let summary-template(
+  // Required
   course: "Kursname",
   author: "Autor",
+  // Optional
   title: "Zusammenfassung",
+  subtitle: none, // z.B. "Erstellt für Unternehmensentwicklung (MSc)"
+  title-image: none, // Pfad zum Titelbild, z.B. "assets/title-image.jpg"
+  show-toc: true, // Inhaltsverzeichnis anzeigen
+  toc-title: "Inhaltsverzeichnis",
   doc,
 ) = {
   // Page setup
@@ -100,5 +106,38 @@
   // Apply heading styles
   show: apply-heading-styles
 
+  // ============================================
+  // Title Page
+  // ============================================
+  align(center)[
+    #v(2cm)
+    #text(size: 24pt, weight: "bold")[#course]
+    #v(0.5cm)
+    #text(size: 16pt)[#title]
+    #if subtitle != none [
+      #v(1cm)
+      #text(size: 12pt)[#subtitle]
+    ]
+    #v(0.3cm)
+    #text(size: 11pt)[#author]
+    #v(2cm)
+  ]
+
+  // Title image (if provided)
+  if title-image != none {
+    figure(
+      title-image,
+    )
+  }
+
+  pagebreak()
+
+  // Table of contents (if enabled)
+  if show-toc {
+    outline(title: toc-title, indent: 1.5em)
+    pagebreak()
+  }
+
+  // Document content
   doc
 }
