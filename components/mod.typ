@@ -6,3 +6,5 @@
 #import "tipps.typ": chapter-summary, master-tipp, pro-tipp, protipp, warning
 #import "table.typ": fancy-table
 #import "plot.typ": plot
+#import "exam.typ": exam-header, exam-points, exam-summary, exam-template, kprim, multiple-choice, open-question
+
