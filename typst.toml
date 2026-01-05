@@ -1,0 +1,9 @@
+[package]
+name = "academic-summary-template"
+version = "0.1.0"
+entrypoint = "lib.typ"
+authors = ["Alexander Wyss"]
+description = "A Typst template package for academic summaries with styled components, tables, and consistent theming"
+repository = "https://github.com/wyssale1/academic-summary-template"
+license = "MIT"
+keywords = ["template", "academic", "summary", "typst"]
