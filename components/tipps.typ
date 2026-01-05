@@ -10,7 +10,7 @@
   title: "Tipp",
   primary-color: blue-600,
   bg-color: blue-50,
-  icon-path: "/assets/lightbulb.svg",
+  icon-path: "../assets/lightbulb.svg",
   icon-offset: (0pt, 0pt),
 ) = {
   let circle-size = 18pt
@@ -60,7 +60,7 @@
     title: title,
     primary-color: blue-600,
     bg-color: blue-50,
-    icon-path: "/assets/lightbulb.svg",
+    icon-path: "../assets/lightbulb.svg",
   )
 }
 
@@ -74,7 +74,7 @@
     title: title,
     primary-color: yellow-600,
     bg-color: yellow-50,
-    icon-path: "/assets/triangle-alert.svg",
+    icon-path: "../assets/triangle-alert.svg",
     icon-offset: (0pt, -0.6pt),
   )
 }
@@ -86,7 +86,7 @@
     title: title,
     primary-color: gray-950,
     bg-color: gray-100,
-    icon-path: "/assets/list-check.svg",
+    icon-path: "../assets/list-check.svg",
     icon-offset: (0.5pt, 0pt),
   )
 }
