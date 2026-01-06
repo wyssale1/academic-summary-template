@@ -1,10 +1,10 @@
 // ============================================
 // General UI Elements
 // ============================================
-#import "../styles/colors.typ": blue-100, gray-100, gray-950, red-100, yellow-100
+#import "../styles/colors.typ": blue-100, gray-100, gray-950, green-100, red-100, yellow-100
 
 // Highlight box with optional color
-// color: "gray" (default), "blue", "red", "yellow"
+// color: "gray" (default), "blue", "red", "yellow", "green"
 #let highlight-box(
   content,
   color: "gray",
@@ -15,6 +15,8 @@
     red-100
   } else if color == "yellow" {
     yellow-100
+  } else if color == "green" {
+    green-100
   } else {
     gray-100
   }
