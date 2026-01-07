@@ -2,6 +2,9 @@
 
 A Typst template package for academic summaries with styled components, tables, and consistent theming.
 
+
+> **NEU**: Detaillierte Dokumentation aller Komponenten findest du in [REFERENCE.md](REFERENCE.md).
+
 ## Installation
 
 > **Hinweis**: Typst unterstützt derzeit **keinen direkten Import von GitHub URLs**. Das Package muss lokal installiert werden, aber mit dem Symlink-Ansatz werden Änderungen automatisch übernommen.
@@ -74,13 +77,18 @@ Repository neben dein Projekt klonen:
 
 ## Komponenten
 
-| Komponente          | Beschreibung                         |
-| ------------------- | ------------------------------------ |
-| `pro-tipp()`        | Blauer Tipp-Kasten mit Glühbirne     |
-| `warning()`         | Gelber Warnungs-Kasten               |
-| `chapter-summary()` | Grauer Zusammenfassungs-Kasten       |
-| `fancy-table()`     | Styled Table mit Header-Highlighting |
-| `plot()`            | Figure-Wrapper mit Skalierung        |
+| Komponente          | Beschreibung                                           |
+| ------------------- | ------------------------------------------------------ |
+| `pro-tipp()`        | Blauer Tipp-Kasten mit Glühbirne                       |
+| `warning()`         | Gelber Warnungs-Kasten                                 |
+| `chapter-summary()` | Grauer Zusammenfassungs-Kasten                         |
+| `highlight-box()`   | Farbige Box (`gray`, `blue`, `red`, `yellow`, `green`) |
+| `fancy-table()`     | Styled Table mit Header-Highlighting                   |
+| `plot()`            | Figure-Wrapper mit Skalierung                          |
+| `exam-template()`   | Setup für Prüfungen (Font, Margin)                     |
+| `kprim()`           | KPRIM Prüfungs-Frage                                   |
+| `multiple-choice()` | Multiple-Choice Prüfungs-Frage                         |
+| `open-question()`   | Offene Prüfungs-Frage                                  |
 
 ## Styles
 
