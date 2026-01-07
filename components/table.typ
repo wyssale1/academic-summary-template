@@ -7,10 +7,11 @@
 // fancy-table with optional repeating header
 // - breakable: true = table can break across pages
 // - header-repeat: true = header repeats on each page (only when breakable=true)
+//   NOTE: Set to false by default to avoid conflicts with nested tables
 #let fancy-table(
   columns: auto,
   breakable: false,
-  header-repeat: true,
+  header-repeat: false,
   ..args,
 ) = {
   show list: set list(indent: 0em, body-indent: 0.5em)
