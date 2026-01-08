@@ -19,6 +19,15 @@
   title-image: none, // Pfad zum Titelbild, z.B. "assets/title-image.jpg"
   show-toc: true, // Inhaltsverzeichnis anzeigen
   toc-title: "Inhaltsverzeichnis",
+  // Cover page options
+  cover-background: rgb("#4A1942"), // Hintergrundfarbe der Titelseite
+  cover-icon: none, // Icon/Logo oben auf der Titelseite
+  institution: none, // z.B. "Universität Zürich"
+  department: none, // z.B. "Institut für Informatik"
+  program: none, // z.B. "Master of Science in Computer Science"
+  supervisor: none, // z.B. "Prof. Dr. Max Muster"
+  date: none, // z.B. "Januar 2024"
+  footer-text: none, // Optionaler Text unten auf der Titelseite
   doc,
 ) = {
   // Page setup
@@ -107,30 +116,84 @@
   show: apply-heading-styles
 
   // ============================================
-  // Title Page
+  // Title Page (Cover Page)
   // ============================================
-  align(center)[
-    #v(2cm)
-    #text(size: 24pt, weight: "bold")[#course]
-    #v(0.5cm)
-    #text(size: 16pt)[#title]
-    #if subtitle != none [
-      #v(1cm)
-      #text(size: 12pt)[#subtitle]
-    ]
-    #v(0.3cm)
-    #text(size: 11pt)[#author]
-    #v(2cm)
-  ]
-
-  // Title image (if provided)
-  if title-image != none {
-    figure(
-      title-image,
+  {
+    // Set cover page with colored background
+    set page(
+      fill: cover-background,
+      margin: (left: 1.2cm, right: 1.2cm, top: 1.2cm, bottom: 1.2cm),
+      header: none,
+      footer: none,
     )
+
+    // White border frame with content
+    block(
+      width: 100%,
+      height: 100%,
+      stroke: (
+        paint: white,
+        thickness: 1.5pt,
+      ),
+      inset: 1cm,
+    )[
+      #set text(fill: white)
+
+      // Top section: Icon and Institution
+      #align(center)[
+        #if cover-icon != none {
+          image(cover-icon, width: 6cm)
+          v(0.8cm)
+        }
+        #if institution != none {
+          text(size: 12pt, tracking: 0.5pt)[#institution]
+          v(0.3cm)
+        }
+      ]
+
+      // Middle section: Title and Author (vertically centered)
+      #v(1fr)
+      #align(center)[
+        #text(size: 26pt, weight: "bold")[#title]
+        #v(1cm)
+        #text(size: 13pt, style: "italic")[By: ]
+        #text(size: 13pt, weight: "bold")[#author]
+      ]
+      #v(1fr)
+
+      // Bottom section: Course, Department, Program, Supervisor, Date
+      #align(center)[
+        #set text(size: 11pt)
+        #if program != none {
+          program
+          linebreak()
+        }
+        #if department != none {
+          department
+          linebreak()
+        }
+        #if course != none and course != "Kursname" {
+          course
+          linebreak()
+        }
+        #if supervisor != none {
+          supervisor
+          linebreak()
+        }
+        #if date != none {
+          date
+        }
+        #v(0.8cm)
+        #if footer-text != none {
+          set text(size: 8pt)
+          footer-text
+        }
+      ]
+    ]
   }
 
   pagebreak()
+
 
   // Table of contents (if enabled)
   if show-toc {
