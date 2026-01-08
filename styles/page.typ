@@ -159,7 +159,7 @@
       #if title-image != none {
         v(1cm)
         align(center)[
-          #image(title-image, width: 70%)
+          #image(title-image, width: 90%)
         ]
       }
       #v(1fr)
