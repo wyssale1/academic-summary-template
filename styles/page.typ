@@ -20,13 +20,9 @@
   show-toc: true, // Inhaltsverzeichnis anzeigen
   toc-title: "Inhaltsverzeichnis",
   // Cover page options
-  cover-background: rgb("#4A1942"), // Hintergrundfarbe der Titelseite
-  cover-icon: none, // Icon/Logo oben auf der Titelseite
+  cover-background: rgb("#1abc9c"), // Hintergrundfarbe der Titelseite
   institution: none, // z.B. "Universität Zürich"
-  department: none, // z.B. "Institut für Informatik"
-  program: none, // z.B. "Master of Science in Computer Science"
-  supervisor: none, // z.B. "Prof. Dr. Max Muster"
-  date: none, // z.B. "Januar 2024"
+  semester: none, // z.B. "1. Semester"
   footer-text: none, // Optionaler Text unten auf der Titelseite
   doc,
 ) = {
@@ -141,47 +137,42 @@
 
       // Top section: Icon and Institution
       #align(center)[
-        #if cover-icon != none {
-          image(cover-icon, width: 6cm)
-          v(0.8cm)
-        }
+        #image("../assets/cover-icon.svg", width: 6cm)
+        #v(0.8cm)
         #if institution != none {
           text(size: 12pt, tracking: 0.5pt)[#institution]
           v(0.3cm)
         }
       ]
 
-      // Middle section: Title and Author (vertically centered)
-      #v(1fr)
+      // Middle section: Course, Title and Author (vertically centered)
+      #v(.4fr)
       #align(center)[
-        #text(size: 26pt, weight: "bold")[#title]
-        #v(1cm)
-        #text(size: 13pt, style: "italic")[By: ]
-        #text(size: 13pt, weight: "bold")[#author]
+        #text(size: 26pt, weight: "bold")[#course]
+        #v(-0.5cm)
+        #text(size: 20pt, weight: "medium")[#title]
+        #v(-.1cm)
+        #text(size: 13pt, weight: "medium")[#author]
       ]
+
+      // Title image (if provided)
+      #if title-image != none {
+        v(1cm)
+        align(center)[
+          #image(title-image, width: 70%)
+        ]
+      }
       #v(1fr)
 
-      // Bottom section: Course, Department, Program, Supervisor, Date
+      // Bottom section: Semester, Department, Institution
       #align(center)[
         #set text(size: 11pt)
-        #if program != none {
-          program
+        #if semester != none {
+          semester
           linebreak()
         }
-        #if department != none {
-          department
-          linebreak()
-        }
-        #if course != none and course != "Kursname" {
-          course
-          linebreak()
-        }
-        #if supervisor != none {
-          supervisor
-          linebreak()
-        }
-        #if date != none {
-          date
+        #if institution != none {
+          institution
         }
         #v(0.8cm)
         #if footer-text != none {
