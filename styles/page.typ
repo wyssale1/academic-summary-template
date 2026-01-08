@@ -20,9 +20,10 @@
   show-toc: true, // Inhaltsverzeichnis anzeigen
   toc-title: "Inhaltsverzeichnis",
   // Cover page options
-  cover-background: rgb("#1abc9c"), // Hintergrundfarbe der Titelseite
+  cover-background: gray-400, // Hintergrundfarbe der Titelseite
   institution: none, // z.B. "Universität Zürich"
   semester: none, // z.B. "1. Semester"
+  specialization: none, // z.B. "MSc Unternehmensentwicklung"
   footer-text: none, // Optionaler Text unten auf der Titelseite
   doc,
 ) = {
@@ -137,7 +138,7 @@
 
       // Top section: Icon and Institution
       #align(center)[
-        #image("../assets/cover-icon.svg", width: 6cm)
+        #image("../assets/cover-icon.svg", width: 4cm)
         #v(0.8cm)
         #if institution != none {
           text(size: 12pt, tracking: 0.5pt)[#institution]
@@ -146,7 +147,7 @@
       ]
 
       // Middle section: Course, Title and Author (vertically centered)
-      #v(.4fr)
+      #v(1.2fr)
       #align(center)[
         #text(size: 26pt, weight: "bold")[#course]
         #v(-0.5cm)
@@ -162,7 +163,7 @@
           #image(title-image, width: 90%)
         ]
       }
-      #v(1fr)
+      #v(1.4fr)
 
       // Bottom section: Semester, Department, Institution
       #align(center)[
@@ -171,10 +172,10 @@
           semester
           linebreak()
         }
-        #if institution != none {
-          institution
+        #if specialization != none {
+          specialization
         }
-        #v(0.8cm)
+        #v(.2cm)
         #if footer-text != none {
           set text(size: 8pt)
           footer-text
