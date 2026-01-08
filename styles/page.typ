@@ -16,7 +16,7 @@
   // Optional
   title: "Zusammenfassung",
   subtitle: none, // z.B. "Erstellt für Unternehmensentwicklung (MSc)"
-  title-image: none, // Pfad zum Titelbild, z.B. "assets/title-image.jpg"
+  title-image: none, // Titelbild als Content, z.B. image("assets/title.jpg")
   show-toc: true, // Inhaltsverzeichnis anzeigen
   toc-title: "Inhaltsverzeichnis",
   // Cover page options
@@ -160,7 +160,8 @@
       #if title-image != none {
         v(1cm)
         align(center)[
-          #image(title-image, width: 90%)
+          #set image(width: 90%)
+          #title-image
         ]
       }
       #v(1.4fr)
