@@ -87,7 +87,7 @@
         inset: 8pt,
         stroke: 0.5pt + gray-400,
         fill: (col, row) => if row == 0 { gray-100 } else { none },
-        align: (left, center, center),
+        align: (left + horizon, center + horizon, center + horizon),
 
         // Header
         [], [*Richtig*], [*Falsch*],
@@ -146,7 +146,7 @@
         inset: 8pt,
         stroke: 0.5pt + gray-400,
         fill: (col, row) => if row == 0 { gray-100 } else { none },
-        align: (left, center),
+        align: (left + horizon, center + horizon),
 
         // Header
         [], [*Richtig*],
