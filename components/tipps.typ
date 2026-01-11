@@ -64,9 +64,6 @@
   )
 }
 
-// Alias for English usage
-#let protipp = pro-tipp
-
 // Warning Implementation (Yellow/Orange)
 #let warning(content, title: "Achtung") = {
   master-tipp(
