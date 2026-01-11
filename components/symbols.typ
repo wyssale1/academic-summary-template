@@ -7,7 +7,7 @@
 
 // Empty checkbox - inline use
 #let cb = box(
-  baseline: 15%,
+  baseline: 0%,
   width: 0.7em,
   height: 0.7em,
   stroke: 0.5pt + gray-500,
@@ -16,7 +16,7 @@
 
 // Checked checkbox - inline use
 #let cb-checked = box(
-  baseline: 15%,
+  baseline: 0%,
   width: 0.7em,
   height: 0.7em,
   stroke: 0.5pt + green-600,
@@ -29,7 +29,7 @@
 
 // Radio button (empty circle)
 #let radio = box(
-  baseline: 15%,
+  baseline: 0%,
   width: 0.7em,
   height: 0.7em,
   stroke: 0.5pt + gray-500,
@@ -38,10 +38,11 @@
 
 // Radio button (filled)
 #let radio-checked = box(
-  baseline: 15%,
+  baseline: 0%,
   width: 0.7em,
   height: 0.7em,
   stroke: 0.5pt + green-600,
   radius: 50%,
   fill: green-600,
 )
+
