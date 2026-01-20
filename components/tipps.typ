@@ -30,7 +30,6 @@
       ]
       // Content (only show if not empty)
       #if content != [] [
-        #v(6pt)
         #set text(size: 10pt)
         #align(left)[
           #content
