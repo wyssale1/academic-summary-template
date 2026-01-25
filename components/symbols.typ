@@ -3,7 +3,7 @@
 // ============================================
 // Reusable symbols for inline text usage
 
-#import "../styles/colors.typ": gray-500, green-600
+#import "../styles/colors.typ": gray-500, green-600, red-600
 
 // Empty checkbox - inline use
 #let cb = box(
@@ -25,6 +25,19 @@
 )[
   #set align(center + horizon)
   #text(size: 0.5em, fill: white, weight: "bold")[✓]
+]
+
+// Wrong checkbox - inline use
+#let cb-wrong = box(
+  baseline: 0%,
+  width: 0.7em,
+  height: 0.7em,
+  stroke: 0.5pt + red-600,
+  radius: 1pt,
+  fill: red-600,
+)[
+  #set align(center + horizon)
+  #text(size: 0.5em, fill: white, weight: "bold")[✗]
 ]
 
 // Radio button (empty circle)

@@ -7,5 +7,5 @@
 #import "table.typ": fancy-table
 #import "plot.typ": plot
 #import "exam.typ": exam-header, exam-points, exam-summary, exam-template, kprim, multiple-choice, open-question
-#import "symbols.typ": cb, cb-checked, radio, radio-checked
+#import "symbols.typ": cb, cb-checked, cb-wrong, radio, radio-checked
 
